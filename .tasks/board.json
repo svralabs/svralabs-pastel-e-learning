@@ -1,0 +1,127 @@
+{
+  "project_name": "svralabs-pastel-e-learning",
+  "architecture_summary": "Modular React app. Design system components extracted from Stitch screens. Pages map 1:1 to major Stitch screens. Shared UI kit in src/components/. Router use React Router. State minimal, local-first. CSS-in-JS via Emotion (already in Stitch output). No Redux (YAGNI).",
+  "tickets": [
+    {
+      "id": "TASK-001",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Extract design system components from Stitch screens",
+      "source_screen": "",
+      "description": "Pull button, badge, card, input, loader/skeleton, tab, table, toast/alert from respective Stitch design system screens. Build atomic components in src/components/ui/. Use exact Stitch class names for CSS. Keep props minimal (children, variant, disabled, onClick). No custom hooks. No state. No logic. Pure presentational.",
+      "target_files": [
+        "src/components/ui/Button.jsx",
+        "src/components/ui/Badge.jsx",
+        "src/components/ui/Card.jsx",
+        "src/components/ui/Input.jsx",
+        "src/components/ui/Loader.jsx",
+        "src/components/ui/Skeleton.jsx",
+        "src/components/ui/Tab.jsx",
+        "src/components/ui/Table.jsx",
+        "src/components/ui/Toast.jsx"
+      ],
+      "acceptance_criteria": [
+        "Each component match Stitch pixel-perfect",
+        "All variants (primary, secondary, danger, etc.) work",
+        "Disabled state match Stitch",
+        "No console errors",
+        "Storybook stories auto-generated (ponytail: skip now, add when design system docs needed)"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-002",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Build showcase_playful_bento page",
+      "source_screen": "showcase_playful_bento",
+      "description": "Convert Stitch bento grid to React page. Use design system components. Layout via CSS Grid. Responsive. No hardcoded colors (use design tokens from src/theme.js). No business logic. Static data for now. Route: /.",
+      "target_files": [
+        "src/pages/Home.jsx"
+      ],
+      "acceptance_criteria": [
+        "Pixel-perfect match Stitch",
+        "Responsive (mobile, tablet, desktop)",
+        "No horizontal scroll",
+        "All interactive elements (buttons, tabs) clickable but noop"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-003",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Build feature_highlights_kids_learning_platform page",
+      "source_screen": "feature_highlights_kids_learning_platform",
+      "description": "Convert feature highlights carousel to React. Use Card, Button components. Static data. Route: /features.",
+      "target_files": [
+        "src/pages/Features.jsx"
+      ],
+      "acceptance_criteria": [
+        "Pixel-perfect match Stitch",
+        "Carousel scrollable (native scroll, no lib)",
+        "All buttons clickable but noop"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-004",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Build 404 error pages (mystery_puzzle, jungle_trail, cosmic_detour)",
+      "source_screen": "404_error_mystery_puzzle,404_error_jungle_trail,404_error_cosmic_detour",
+      "description": "Convert three 404 designs to React. Rotate randomly on 404. Use design system components. Route: /404.",
+      "target_files": [
+        "src/pages/NotFound.jsx"
+      ],
+      "acceptance_criteria": [
+        "All three designs implemented",
+        "Random rotation on load",
+        "Back button functional (navigate to /)",
+        "Pixel-perfect match Stitch"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-005",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Build theme and design tokens",
+      "source_screen": "",
+      "description": "Extract colors, spacing, typography from Stitch screens. Build theme.js. Use CSS variables. Apply globally. No hardcoded values in components.",
+      "target_files": [
+        "src/theme.js",
+        "src/index.css"
+      ],
+      "acceptance_criteria": [
+        "All Stitch colors in theme",
+        "All spacing units in theme",
+        "All typography styles in theme",
+        "No hardcoded values in components"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-006",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "App shell, navigation bar, and router wiring (src/App.jsx)",
+      "source_screen": "",
+      "description": "Build app shell. Add navigation bar (match Stitch header). Set up React Router. Routes: /, /features, /404. 404 catch-all. Lazy load pages. No auth yet (YAGNI).",
+      "target_files": [
+        "src/App.jsx",
+        "src/components/NavBar.jsx"
+      ],
+      "acceptance_criteria": [
+        "All routes work",
+        "Navigation bar match Stitch",
+        "404 catch-all",
+        "Lazy loading (ponytail: skip error boundaries now, add when error reporting needed)",
+        "No console errors"
+      ],
+      "status": "DONE"
+    }
+  ],
+  "status": "IN_PROGRESS",
+  "updated_at": "2026-08-20 12:21:12"
+}
