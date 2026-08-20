@@ -4,16 +4,16 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
-import Features from './pages/Features';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
+import DesignSystem from './pages/DesignSystem';
+import FeatureHighlights from './pages/FeatureHighlights';
+import ShowcasePlayfulBento from './pages/ShowcasePlayfulBento';
 
 function ScreenBar() {
   const loc = useLocation();
   const navs = [
-    { path: '/', label: 'Features' },
-    { path: '/home', label: 'Home' },
-    { path: '/notfound', label: 'NotFound' }
+    { path: '/', label: 'DesignSystem' },
+    { path: '/featurehighlights', label: 'FeatureHighlights' },
+    { path: '/showcaseplayfulbento', label: 'ShowcasePlayfulBento' }
   ];
 
   return (
@@ -49,10 +49,10 @@ export default function App() {
               <ScreenBar />
               <div className="pt-10 min-h-screen">
                 <Routes>
-                  <Route path='/' element={<Features />} />
-        <Route path='/home' element={<Home />} />
-        <Route path='/notfound' element={<NotFound />} />
-                  <Route path="*" element={<Features />} />
+                  <Route path='/' element={<DesignSystem />} />
+        <Route path='/featurehighlights' element={<FeatureHighlights />} />
+        <Route path='/showcaseplayfulbento' element={<ShowcasePlayfulBento />} />
+                  <Route path="*" element={<DesignSystem />} />
                 </Routes>
               </div>
             </BrowserRouter>
