@@ -1,6 +1,6 @@
 {
   "project_name": "svralabs-pastel-e-learning",
-  "architecture_summary": "Modular React app. Core: design system components (src/components/), pages (src/pages/), router (React Router v6). State: local component state. Styling: CSS Modules. No global state manager (YAGNI).",
+  "architecture_summary": "Modular React app. Core: design system components (src/components/), pages (src/pages/), router (react-router-dom), state (zustand). Styling: TailwindCSS. No custom CSS files. One component per file. Shared props via TypeScript interfaces. Lazy load pages. Error boundaries wrap routes. 404 variants consolidated into single page with dynamic illustration.",
   "tickets": [
     {
       "id": "TASK-001",
@@ -8,21 +8,22 @@
       "model": "hermes-auto",
       "title": "Design system foundation - button, badge, card components",
       "source_screen": "button_design_system_showcase, badge_design_system_showcase, card_design_system_showcase",
-      "description": "Convert Stitch button, badge, card HTML/CSS to reusable React components. Extract shared props (size, variant, disabled). Use CSS Modules for styling. Support all variants shown in screens.",
+      "description": "Convert Stitch buttons, badges, cards to React components. Use Tailwind for styling. Extract shared props (size, variant, disabled) into TypeScript interfaces. Support all variants shown in screens. Add Storybook stories for visual regression testing.",
       "target_files": [
-        "src/components/Button.jsx",
-        "src/components/Badge.jsx",
-        "src/components/Card.jsx",
-        "src/components/Button.module.css",
-        "src/components/Badge.module.css",
-        "src/components/Card.module.css"
+        "src/components/Button.tsx",
+        "src/components/Badge.tsx",
+        "src/components/Card.tsx",
+        "src/stories/Button.stories.tsx",
+        "src/stories/Badge.stories.tsx",
+        "src/stories/Card.stories.tsx"
       ],
       "acceptance_criteria": [
         "Components match Stitch design pixel-perfect",
-        "All variants (primary, secondary, outline, etc.) work",
-        "Disabled state renders correctly",
-        "Props documented in JSDoc",
-        "CSS Modules scope styles"
+        "All variants (primary, secondary, danger, etc.) work",
+        "Disabled state styling correct",
+        "Hover/focus/active states match design",
+        "Storybook stories render all variants",
+        "TypeScript props interface exported"
       ],
       "status": "DONE"
     },
@@ -30,25 +31,24 @@
       "id": "TASK-002",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Input, toast, loader, skeleton components",
+      "title": "Design system - input, toast, loader components",
       "source_screen": "input_design_system_showcase, toast_alert_design_system_showcase, loader_skeleton_design_system_showcase",
-      "description": "Build input (text, select, checkbox), toast notification, loader, skeleton components. Inputs: validation states (error, success). Toast: auto-dismiss, manual dismiss. Loader: spinner + progress bar variants. Skeleton: shimmer effect.",
+      "description": "Build input fields (text, select, checkbox), toast notifications, skeleton loaders. Inputs: support validation states (error, success). Toasts: auto-dismiss, position top-right. Loaders: animated, match design system colors. Use Tailwind. Add Storybook stories.",
       "target_files": [
-        "src/components/Input.jsx",
-        "src/components/Toast.jsx",
-        "src/components/Loader.jsx",
-        "src/components/Skeleton.jsx",
-        "src/components/Input.module.css",
-        "src/components/Toast.module.css",
-        "src/components/Loader.module.css",
-        "src/components/Skeleton.module.css"
+        "src/components/Input.tsx",
+        "src/components/Toast.tsx",
+        "src/components/Loader.tsx",
+        "src/stories/Input.stories.tsx",
+        "src/stories/Toast.stories.tsx",
+        "src/stories/Loader.stories.tsx"
       ],
       "acceptance_criteria": [
-        "All input types render correctly",
-        "Validation states show proper styling",
-        "Toast auto-dismiss works (3s default)",
-        "Loader variants match design",
-        "Skeleton shimmer effect present"
+        "Inputs support all types (text, password, select, checkbox)",
+        "Validation states (error, success) match design",
+        "Toasts auto-dismiss after 5s, position top-right",
+        "Loaders animate smoothly, match design colors",
+        "Storybook stories cover all variants",
+        "TypeScript props interfaces exported"
       ],
       "status": "DONE"
     },
@@ -56,20 +56,21 @@
       "id": "TASK-003",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Tab and table components",
-      "source_screen": "tab_design_system_showcase, table_design_system_showcase",
-      "description": "Build tab component (horizontal, vertical layouts) and table component (sortable headers, pagination). Tab: controlled/uncontrolled modes. Table: row selection, hover effects.",
+      "title": "Design system - table, tab components",
+      "source_screen": "table_design_system_showcase, tab_design_system_showcase",
+      "description": "Build table and tab components. Tables: support sorting, pagination. Tabs: horizontal/vertical layouts, active state styling. Use Tailwind. Add Storybook stories.",
       "target_files": [
-        "src/components/Tabs.jsx",
-        "src/components/Table.jsx",
-        "src/components/Tabs.module.css",
-        "src/components/Table.module.css"
+        "src/components/Table.tsx",
+        "src/components/Tabs.tsx",
+        "src/stories/Table.stories.tsx",
+        "src/stories/Tabs.stories.tsx"
       ],
       "acceptance_criteria": [
-        "Tab switching works without page reload",
-        "Table sorting works (client-side)",
-        "Pagination controls functional",
-        "Row hover/selection states match design"
+        "Tables support sorting (client-side), pagination",
+        "Tabs support horizontal/vertical layouts",
+        "Active tab styling matches design",
+        "Storybook stories cover all variants",
+        "TypeScript props interfaces exported"
       ],
       "status": "DONE"
     },
@@ -77,18 +78,18 @@
       "id": "TASK-004",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Playful bento showcase page",
-      "source_screen": "showcase_playful_bento",
-      "description": "Convert bento showcase screen to React page. Use design system components. Responsive grid layout. Hover animations as shown in design.",
+      "title": "Feature highlights page (src/pages/FeatureHighlights.tsx)",
+      "source_screen": "feature_highlights_kids_learning_platform",
+      "description": "Convert feature highlights screen to React page. Use design system components (cards, buttons, badges). Implement responsive layout. Add placeholder for dynamic content (courses, testimonials).",
       "target_files": [
-        "src/pages/BentoShowcase.jsx",
-        "src/pages/BentoShowcase.module.css"
+        "src/pages/FeatureHighlights.tsx"
       ],
       "acceptance_criteria": [
-        "Page matches Stitch design exactly",
-        "Responsive breakpoints work (mobile, tablet, desktop)",
-        "Hover animations present",
-        "All interactive elements functional"
+        "Page matches Stitch design pixel-perfect",
+        "Responsive layout (mobile, tablet, desktop)",
+        "Uses design system components (no custom styling)",
+        "Dynamic content placeholders (courses, testimonials)",
+        "TypeScript props for dynamic data"
       ],
       "status": "DONE"
     },
@@ -96,18 +97,18 @@
       "id": "TASK-005",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Feature highlights page",
-      "source_screen": "feature_highlights_kids_learning_platform",
-      "description": "Build feature highlights page. Use card components. Scroll animations for feature cards. Responsive layout.",
+      "title": "Playful bento showcase page (src/pages/BentoShowcase.tsx)",
+      "source_screen": "showcase_playful_bento",
+      "description": "Convert playful bento showcase screen to React page. Implement grid layout with responsive breakpoints. Use design system components. Add placeholder for dynamic course cards.",
       "target_files": [
-        "src/pages/FeatureHighlights.jsx",
-        "src/pages/FeatureHighlights.module.css"
+        "src/pages/BentoShowcase.tsx"
       ],
       "acceptance_criteria": [
-        "Page matches Stitch design",
-        "Scroll animations work",
-        "Responsive layout maintains proportions",
-        "All links functional"
+        "Page matches Stitch design pixel-perfect",
+        "Responsive grid layout (mobile, tablet, desktop)",
+        "Uses design system components",
+        "Dynamic course card placeholders",
+        "TypeScript props for dynamic data"
       ],
       "status": "DONE"
     },
@@ -115,19 +116,20 @@
       "id": "TASK-006",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "404 error pages (3 variants)",
+      "title": "404 error page with dynamic illustrations (src/pages/NotFound.tsx)",
       "source_screen": "404_error_mystery_puzzle, 404_error_jungle_trail, 404_error_cosmic_detour",
-      "description": "Build 3 distinct 404 error pages. Randomly select variant on 404 route. Use design system components where applicable. Include 'Back to Home' button.",
+      "description": "Build single 404 page with dynamic illustration system. Randomly select one of three illustrations on load. Use design system components. Add 'Go Home' button with router link.",
       "target_files": [
-        "src/pages/NotFoundMystery.jsx",
-        "src/pages/NotFoundJungle.jsx",
-        "src/pages/NotFoundCosmic.jsx",
-        "src/pages/NotFound.module.css"
+        "src/pages/NotFound.tsx",
+        "src/assets/illustrations/404-mystery-puzzle.svg",
+        "src/assets/illustrations/404-jungle-trail.svg",
+        "src/assets/illustrations/404-cosmic-detour.svg"
       ],
       "acceptance_criteria": [
-        "All 3 variants render correctly",
-        "Random selection works",
-        "'Back to Home' button navigates correctly",
+        "Page shows random illustration on load",
+        "All three illustrations work",
+        "Uses design system components",
+        "'Go Home' button links to home page",
         "Responsive layout"
       ],
       "status": "DONE"
@@ -136,24 +138,43 @@
       "id": "TASK-007",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "App shell, navigation bar, and router wiring (src/App.jsx)",
+      "title": "Global state management (zustand store)",
       "source_screen": "",
-      "description": "Create app shell. Navigation bar with logo, menu items. React Router v6 setup. Route definitions for all pages. 404 fallback route. Layout component for consistent header/footer.",
+      "description": "Set up zustand store for global state (user auth, theme, notifications). Create slices for auth, theme, notifications. Add TypeScript types. Persist auth state to localStorage.",
       "target_files": [
-        "src/App.jsx",
-        "src/components/Layout.jsx",
-        "src/components/Navbar.jsx",
-        "src/components/Navbar.module.css"
+        "src/store/useStore.ts"
       ],
       "acceptance_criteria": [
-        "All routes work (/, /features, /bento, /404)",
-        "Navigation bar present on all pages",
-        "404 route shows random error page",
-        "Responsive layout maintained"
+        "zustand store created with auth, theme, notifications slices",
+        "Auth state persists to localStorage",
+        "TypeScript types for all state",
+        "Store hooks exported for components"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-008",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "App shell, navigation bar, and router wiring (src/App.jsx)",
+      "source_screen": "",
+      "description": "Build app shell with navigation bar. Set up react-router-dom with lazy-loaded routes. Add error boundaries. Implement responsive navigation (mobile menu). Use design system components. Route structure: / (home), /features, /bento, /404.",
+      "target_files": [
+        "src/App.jsx",
+        "src/components/NavBar.tsx",
+        "src/routes.tsx"
+      ],
+      "acceptance_criteria": [
+        "App shell renders navigation bar",
+        "react-router-dom set up with lazy-loaded routes",
+        "Error boundaries wrap routes",
+        "Responsive navigation (mobile menu)",
+        "Uses design system components",
+        "Route structure matches requirements"
       ],
       "status": "DONE"
     }
   ],
   "status": "IN_PROGRESS",
-  "updated_at": "2026-08-20 17:55:48"
+  "updated_at": "2026-08-20 19:35:04"
 }
