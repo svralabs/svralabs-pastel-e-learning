@@ -1,0 +1,85 @@
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  background-color: #f5f5f5;
+  text-align: left;
+  padding: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #616161;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tableHeader:hover {
+  background-color: #e0e0e0;
+}
+
+.tableHeader.sortAsc::after {
+  content: ' ↑';
+}
+
+.tableHeader.sortDesc::after {
+  content: ' ↓';
+}
+
+.tableRow {
+  border-bottom: 1px solid #e0e0e0;
+  transition: all 0.2s ease;
+}
+
+.tableRow:hover {
+  background-color: #f5f5f5;
+}
+
+.tableRow.selected {
+  background-color: #e8def8;
+}
+
+.tableCell {
+  padding: 1rem;
+  font-size: 0.875rem;
+  color: #424242;
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.paginationButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #e0e0e0;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 0.25rem;
+}
+
+.paginationButton:hover {
+  background-color: #f5f5f5;
+}
+
+.paginationButton.active {
+  background-color: #6750a4;
+  color: white;
+  border-color: #6750a4;
+}
+
+.paginationInfo {
+  font-size: 0.875rem;
+  color: #616161;
+}

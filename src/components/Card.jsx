@@ -1,9 +1,30 @@
 import React from 'react';
-export default function Card({ children, className = '', title, subtitle, ...props }) {
+import styles from './Card.module.css';
+
+/**
+ * Card component with multiple variants and padding options
+ * @param {Object} props - Component props
+ * @param {string} [props.variant='surface'] - Card variant (surface, surfaceContainer, surfaceContainerLow)
+ * @param {string} [props.padding='padding'] - Padding size (paddingSmall, padding, paddingLarge)
+ * @param {boolean} [props.dotPattern=false] - Apply dot pattern background
+ * @param {React.ReactNode} props.children - Card content
+ */
+export default function Card({
+  variant = 'surface',
+  padding = 'padding',
+  dotPattern = false,
+  children,
+  ...props
+}) {
+  const cardClasses = [
+    styles.card,
+    styles[variant],
+    styles[padding],
+    dotPattern ? styles.dotPattern : '',
+  ].join(' ');
+
   return (
-    <div className={`bg-white dark:bg-[#1e1e24] rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-slate-800 ${className}`} {...props}>
-      {title && <h3 className="font-bold text-lg text-slate-800 dark:text-white mb-1">{title}</h3>}
-      {subtitle && <p className="text-sm text-slate-500 mb-4">{subtitle}</p>}
+    <div className={cardClasses} {...props}>
       {children}
     </div>
   );

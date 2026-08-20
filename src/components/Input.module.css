@@ -1,0 +1,78 @@
+.inputContainer {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.inputLabel {
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: #1c1b1f;
+  margin-bottom: 0.5rem;
+}
+
+.inputField {
+  width: 100%;
+  background-color: #ffffff;
+  border: 2px solid #cac4d0;
+  border-radius: 24px;
+  padding: 1rem 1.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #1c1b1f;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #6750a4;
+  box-shadow: none;
+}
+
+.inputField.error {
+  border-color: #b3261e;
+}
+
+.inputField.success {
+  border-color: #42833c;
+}
+
+.inputIconContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.inputIconLeading {
+  left: 0;
+  padding-left: 1rem;
+}
+
+.inputIconTrailing {
+  right: 0;
+  padding-right: 1rem;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.inputErrorMessage {
+  margin-top: 0.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #b3261e;
+}
+
+.inputSuccessIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #42833c;
+}

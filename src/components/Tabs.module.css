@@ -1,0 +1,115 @@
+.tabsContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.tabButton {
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabButton.active {
+  border-bottom: 0.25rem solid #6750a4;
+  color: #6750a4;
+}
+
+.tabButton:hover:not(.active) {
+  color: #6750a4;
+}
+
+.verticalTabsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.verticalTabButton {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.verticalTabButton.active {
+  background-color: #e8def8;
+  color: #6750a4;
+  border-radius: 0.5rem;
+}
+
+.verticalTabButton:hover:not(.active) {
+  background-color: #f5f5f5;
+  border-radius: 0.5rem;
+}
+
+.iconTabContainer {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 9999px;
+  border: 2px solid #e0e0e0;
+}
+
+.iconTabButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 9999px;
+}
+
+.iconTabButton.active {
+  background-color: #e8def8;
+  color: #6750a4;
+}
+
+.iconTabButton:hover:not(.active) {
+  background-color: #f5f5f5;
+}
+
+.segmentedControlContainer {
+  display: flex;
+  width: 100%;
+  max-width: 20rem;
+  padding: 0.25rem;
+  background-color: white;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+}
+
+.segmentedControlButton {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 9999px;
+  text-align: center;
+}
+
+.segmentedControlButton.active {
+  background-color: #6750a4;
+  color: white;
+}
+
+.segmentedControlButton:hover:not(.active) {
+  background-color: #f5f5f5;
+}
