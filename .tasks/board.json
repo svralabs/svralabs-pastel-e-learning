@@ -1,31 +1,27 @@
 {
   "project_name": "svralabs-pastel-e-learning",
-  "architecture_summary": "Modular React app. Design system components extracted from Stitch screens. Pages map 1:1 to major screens. Shared UI kit in src/components/. Router use React Router v6. Lazy load pages. CSS modules for scoped styles. No global CSS. Tailwind optional, only if design tokens match exactly. Prefer inline styles for unique one-off designs.",
+  "architecture_summary": "Modular React app. Design system components in src/components/. Pages in src/pages/. Router use React Router. CSS use Tailwind. State local first, context for global (auth, theme). No Redux. No SSR. Static assets in public/.",
   "tickets": [
     {
       "id": "TASK-001",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Extract design system components from Stitch screens",
-      "source_screen": "",
-      "description": "Pull button, badge, card, input, loader/skeleton, table, tab, toast/alert from respective Stitch design system screens. Build atomic components in src/components/. Use CSS modules. Export as named exports. No props validation yet. Keep identical to Stitch markup and styles.",
+      "title": "Design system foundation - button, badge, card components",
+      "source_screen": "button_design_system_showcase, badge_design_system_showcase, card_design_system_showcase",
+      "description": "Extract button, badge, card from Stitch screens. Build reusable components in src/components/. Use Tailwind for styling. Support all variants (size, color, state) shown in screens. Export as named exports from index.js in each component dir.",
       "target_files": [
-        "src/components/Button.jsx",
-        "src/components/Badge.jsx",
-        "src/components/Card.jsx",
-        "src/components/Input.jsx",
-        "src/components/Loader.jsx",
-        "src/components/Skeleton.jsx",
-        "src/components/Table.jsx",
-        "src/components/Tabs.jsx",
-        "src/components/Toast.jsx",
-        "src/components/Alert.jsx"
+        "src/components/Button/Button.jsx",
+        "src/components/Button/index.js",
+        "src/components/Badge/Badge.jsx",
+        "src/components/Badge/index.js",
+        "src/components/Card/Card.jsx",
+        "src/components/Card/index.js"
       ],
       "acceptance_criteria": [
-        "Components render pixel-perfect match to Stitch screens",
-        "No external dependencies added",
-        "CSS modules used for all styles",
-        "Components reusable across app"
+        "Components match Stitch screens pixel-perfect",
+        "All variants (size, color, state) work",
+        "Props documented in JSDoc",
+        "Components render without errors in Storybook"
       ],
       "status": "DONE"
     },
@@ -33,17 +29,23 @@
       "id": "TASK-002",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Build showcase_playful_bento page",
-      "source_screen": "showcase_playful_bento",
-      "description": "Convert Stitch screen to React page. Use design system components where possible. Inline styles for unique layouts. Page component in src/pages/ShowcasePlayfulBento.jsx. Route path: /showcase.",
+      "title": "Design system - input, toast, loader components",
+      "source_screen": "input_design_system_showcase, toast_alert_design_system_showcase, loader_skeleton_design_system_showcase",
+      "description": "Build input, toast, loader components. Input support text, password, select, checkbox, radio. Toast support success, error, warning, info. Loader support spinner, skeleton. Use Tailwind. Export from src/components/Input/, src/components/Toast/, src/components/Loader/.",
       "target_files": [
-        "src/pages/ShowcasePlayfulBento.jsx"
+        "src/components/Input/Input.jsx",
+        "src/components/Input/index.js",
+        "src/components/Toast/Toast.jsx",
+        "src/components/Toast/index.js",
+        "src/components/Loader/Loader.jsx",
+        "src/components/Loader/index.js"
       ],
       "acceptance_criteria": [
-        "Page match Stitch screen exactly",
-        "All interactive elements functional",
-        "No hardcoded text (use i18n stubs)",
-        "Responsive as per Stitch breakpoints"
+        "Components match Stitch screens",
+        "All variants work",
+        "Input validation show inline errors",
+        "Toast auto-dismiss after 5s, manual dismiss work",
+        "Loader skeleton match content shape"
       ],
       "status": "DONE"
     },
@@ -51,16 +53,21 @@
       "id": "TASK-003",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Build feature_highlights_kids_learning_platform page",
-      "source_screen": "feature_highlights_kids_learning_platform",
-      "description": "Convert Stitch screen to React page. Use design system components. Page component in src/pages/FeatureHighlights.jsx. Route path: /features.",
+      "title": "Design system - tab, table components",
+      "source_screen": "tab_design_system_showcase, table_design_system_showcase",
+      "description": "Build tab, table components. Tab support horizontal, vertical, controlled, uncontrolled. Table support sorting, pagination, row selection. Use Tailwind. Export from src/components/Tabs/, src/components/Table/.",
       "target_files": [
-        "src/pages/FeatureHighlights.jsx"
+        "src/components/Tabs/Tabs.jsx",
+        "src/components/Tabs/index.js",
+        "src/components/Table/Table.jsx",
+        "src/components/Table/index.js"
       ],
       "acceptance_criteria": [
-        "Page match Stitch screen exactly",
-        "All animations/transitions present",
-        "Components reusable from design system"
+        "Tabs match Stitch screens",
+        "Table match Stitch screens",
+        "Tab panels lazy-load content",
+        "Table sorting work on click headers",
+        "Table pagination work"
       ],
       "status": "DONE"
     },
@@ -68,18 +75,17 @@
       "id": "TASK-004",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Build 404 error pages (mystery_puzzle, jungle_trail, cosmic_detour)",
-      "source_screen": "404_error_mystery_puzzle,404_error_jungle_trail,404_error_cosmic_detour",
-      "description": "Convert three Stitch 404 screens to React pages. Use design system components. Pages in src/pages/errors/. Route paths: /404-mystery, /404-jungle, /404-cosmic. Randomly select one on 404 route.",
+      "title": "Feature highlights page (src/pages/FeatureHighlights.jsx)",
+      "source_screen": "feature_highlights_kids_learning_platform",
+      "description": "Convert Stitch screen to React page. Use design system components. Layout match screen. Responsive. Data hardcoded for now. Later fetch from API.",
       "target_files": [
-        "src/pages/errors/Error404Mystery.jsx",
-        "src/pages/errors/Error404Jungle.jsx",
-        "src/pages/errors/Error404Cosmic.jsx"
+        "src/pages/FeatureHighlights.jsx"
       ],
       "acceptance_criteria": [
-        "Pages match Stitch screens exactly",
-        "Random selection on /404 route",
-        "All interactive elements functional"
+        "Page match Stitch screen pixel-perfect",
+        "All sections render",
+        "Responsive on mobile, tablet, desktop",
+        "No console errors"
       ],
       "status": "DONE"
     },
@@ -87,16 +93,17 @@
       "id": "TASK-005",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "Build design system showcase page",
-      "source_screen": "toast_alert_design_system_showcase,table_design_system_showcase,tab_design_system_showcase,loader_skeleton_design_system_showcase,input_design_system_showcase,card_design_system_showcase,button_design_system_showcase,badge_design_system_showcase",
-      "description": "Create single page to showcase all design system components. Use actual components from src/components/. Page in src/pages/DesignSystem.jsx. Route path: /design-system. Include interactive playground for each component.",
+      "title": "Playful bento showcase page (src/pages/BentoShowcase.jsx)",
+      "source_screen": "showcase_playful_bento",
+      "description": "Convert Stitch bento screen to React page. Use design system components. Layout match screen. Responsive. Data hardcoded. Later fetch from CMS.",
       "target_files": [
-        "src/pages/DesignSystem.jsx"
+        "src/pages/BentoShowcase.jsx"
       ],
       "acceptance_criteria": [
-        "All components displayed with variants",
-        "Interactive playground for each component",
-        "Page match Stitch design system screens collectively"
+        "Page match Stitch screen",
+        "Bento grid items position correct",
+        "Responsive",
+        "Hover effects work"
       ],
       "status": "DONE"
     },
@@ -104,23 +111,76 @@
       "id": "TASK-006",
       "role": "frontend",
       "model": "hermes-auto",
-      "title": "App shell, navigation bar, and router wiring (src/App.jsx)",
-      "source_screen": "",
-      "description": "Create main App shell. Add navigation bar with links to all pages. Set up React Router v6. Lazy load all pages. Add 404 catch-all route. Include Suspense fallback with skeleton loader. App component in src/App.jsx.",
+      "title": "404 error pages (src/pages/errors/404MysteryPuzzle.jsx, 404JungleTrail.jsx, 404CosmicDetour.jsx)",
+      "source_screen": "404_error_mystery_puzzle, 404_error_jungle_trail, 404_error_cosmic_detour",
+      "description": "Convert 3 Stitch 404 screens to React pages. Use design system components. Layout match screens. Responsive. Rotate pages via router config later.",
       "target_files": [
-        "src/App.jsx",
-        "src/routes.jsx"
+        "src/pages/errors/404MysteryPuzzle.jsx",
+        "src/pages/errors/404JungleTrail.jsx",
+        "src/pages/errors/404CosmicDetour.jsx"
       ],
       "acceptance_criteria": [
-        "All routes functional",
-        "Navigation bar present on all pages",
-        "Lazy loading implemented",
-        "404 route catch all errors",
-        "Suspense fallback match loader design system"
+        "Pages match Stitch screens",
+        "Responsive",
+        "Back to home button work",
+        "No console errors"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-007",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "Design system storybook setup (src/stories/) and documentation",
+      "source_screen": "all_design_system_showcase_screens",
+      "description": "Setup Storybook. Add stories for all design system components. Document props, variants, usage. Use CSF format. Stories match Stitch screens.",
+      "target_files": [
+        "src/stories/Button.stories.jsx",
+        "src/stories/Badge.stories.jsx",
+        "src/stories/Card.stories.jsx",
+        "src/stories/Input.stories.jsx",
+        "src/stories/Toast.stories.jsx",
+        "src/stories/Loader.stories.jsx",
+        "src/stories/Tabs.stories.jsx",
+        "src/stories/Table.stories.jsx"
+      ],
+      "acceptance_criteria": [
+        "Storybook run without errors",
+        "All components have stories",
+        "Stories match Stitch screens",
+        "Props documented",
+        "Variants shown"
+      ],
+      "status": "DONE"
+    },
+    {
+      "id": "TASK-008",
+      "role": "frontend",
+      "model": "hermes-auto",
+      "title": "App shell, navigation bar, and router wiring (src/App.jsx)",
+      "source_screen": "",
+      "description": "Build app shell. Add navigation bar. Setup React Router. Routes for all pages. 404 route rotate between 3 error pages. Lazy-load pages. Error boundaries. Global styles. Favicon. Meta tags.",
+      "target_files": [
+        "src/App.jsx",
+        "src/routes.jsx",
+        "src/components/NavBar/NavBar.jsx",
+        "src/components/NavBar/index.js",
+        "src/styles/global.css"
+      ],
+      "acceptance_criteria": [
+        "App load without errors",
+        "Navigation work",
+        "Routes match pages",
+        "404 route rotate between 3 error pages",
+        "Lazy-load work",
+        "Error boundaries catch errors",
+        "Global styles match design system",
+        "Favicon show",
+        "Meta tags present"
       ],
       "status": "DONE"
     }
   ],
   "status": "IN_PROGRESS",
-  "updated_at": "2026-08-20 14:13:58"
+  "updated_at": "2026-08-20 16:01:00"
 }
